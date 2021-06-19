@@ -1,66 +1,83 @@
 #include <stdio.h>
 #include <assert.h>
 
-int max(int a[],int n)
+int max(int arr[],int n)
 { 
-  int i,x=a[0];
-  for(i=0;i<n;i++)
+  int i;
+  int max=arr[0];
+  
+  for(i=1;i<n;i++)
   {
-    if(x<a[i])
-      x=a[i];
+    if(arr[i]>max)
+    {
+      max=arr[i];
+    }
   }
-  return x;
+  
+  return max;
 }
-int min(int a[],int n) {
-  int i,x=a[0];
-  for(i=0;i<n;i++)
+int min(int arr[],int n) {
+  int i;
+  int min=arr[0];
+  for(i=1;i<n;i++)
   {
-    if(x>a[i])
-      x=a[i];
+    if(arr[i]<min)
+    {
+      min=arr[i];
+    }
   }
-  return x;
+  return min;
 }
-float average(int a[],int n)
+float average(int arr[],int n)
 {
-  int i ; float sum=0;
+  int i ; 
+  int sum=0;
+  float average=0;
+  
     for(i=0;i<n;i++)
-      (
-      sum+=a[i];
+    {
+      sum=sum+arr[i];
       }
-      sum=sum/n;
-      return sum;
+      average=(float)sum/(float)n;
+      return average;
       }
-      int mode (int a[],int n){
+      int mode (int arr[],int n){
         int i,j;
-        int maxcount=0,maxvalue=0;
-        for(i=0;i<n;++i){
-          int count=0;
-          for(j=0;j<n;++j){
-            if(a[i]==a[j])
-              ++count;
+        int maxcount=0,maxvalue=0,count;
+        for(i=0;i<n;i++){
+           count=0;
+          for(j=0;j<n;j++){
+            if(arr[i]==arr[j])
+            {
+              count++;
+            }
           }
           if (count >maxcount){
             maxcount=count;
-            maxvalue=a[i];
+            maxvalue=arr[i];
           }
         }
         return maxvalue;
       }
-      int factors(int n,int a[]){
-        int i,j=0;
-          int x=n;
-        for(i=2;i<n;i++)
+      int factors(int num,int ret[]){
+        int k=0;
+        while (num%2==0)
         {
-          if(n%i==0)
-          {
-            a[j]=i;
-            //printf("%d%d%d\n",j,n,a[j]);
-            n=n/i;
-            i=1;
-            j++;
+          ret[k]=2;
+          k++;
+          num=num/2;
+        }
+        for(int j=3;j<=num;j+=2)
+        {
+          while(num%j==0)
+          {ret[k]=j;
+           k++;
+           num=num/j;
           }
         }
-        returnj;
+        return k;
       }
+     
+      
             
       
